@@ -1,0 +1,8 @@
+test
+.storybook
+src/.storybook
+__mocks__
+*.test.js
+storybook-static
+.idea
+.env

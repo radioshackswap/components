@@ -1,0 +1,76 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import ThemeProvider from 'src/theme';
+
+<Meta title="Guide/Introduction" component={ThemeProvider} />
+
+## Installation
+
+`yarn add @radioshackswap/components`
+
+or
+
+`npm install @radioshackswap/components`
+
+#### Install below dependancies as its peer dependancies
+
+```
+react
+react-dom
+@radioshackswap/sdk2 ( for version see below mapping )
+```
+
+#### components <-> sdk version mapping
+
+| @radioshackswap/components | @radioshackswap/sdk2 |
+| -------------------------- | -------------------- |
+| 2.0.1                      | 2.0.1                |
+
+
+## Getting started
+
+In your main file wrap your app with `RadioShackProvider`:
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { RadioShackProvider } from '@radioshackswap/components';
+
+// library -> web3.js provider
+// chainId -> chain id with which user is connected
+// account -> user's connected wallet address
+// theme -> optional ( refer Theme guide to customize it )
+ReactDOM.render(
+  <React.StrictMode>
+    <RadioShackProvider library={library} chainId={chainId} account={account} theme={theme}>
+      <App />
+    </RadioShackProvider>
+  </React.StrictMode>,
+  document.getElementById('root'),
+);
+```
+
+# Customizing Theme
+
+In `RadioShackProvider` you can pass custom theme. Follow `Guide -> Theme` to customize theme.
+
+# Redux
+
+If you are using redux in your application then you will need to use custom context https://react-redux.js.org/api/hooks#custom-context with your Provider.
+
+# development flow
+
+1. do `yarn` in components
+2. do `yarn dev` which will watch for any files changes and recompiles files
+3. do `yalc link "@radioshackswap/components"` in the project where you want to use components
+
+Incase react hook violation error comes, in that case follow below steps also.
+
+1. do `yarn link` in `<project_root>/node_modules/react`.
+2. do `yarn link react` in components which will symlink react which are being used by project.
+
+# Publish flow
+
+- do `yarn publish` which will build the components and publish to npm.
